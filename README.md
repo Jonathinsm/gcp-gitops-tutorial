@@ -11,7 +11,7 @@ the center of your delivery pipelines, developers can make pull requests to
 accelerate and simplify application deployments and operations tasks to your
 infrastructure or container-orchestration system (e.g. [Kubernetes](https://kubernetes.io/)).
 
-<p align="center"><img src="https://cloud.google.com/kubernetes-engine/images/gitops-tutorial-pipeline-architecture.svg/></p>
+<p align="center"><img src="https://cloud.google.com/kubernetes-engine/images/gitops-tutorial-pipeline-architecture.svg" /></p>
 
 ## Why is GitOps awesome? <!-- omit in toc -->
 
