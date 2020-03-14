@@ -1,4 +1,4 @@
-# GitOps <!-- omit in toc -->
+# GitOps on Google Cloud<!-- omit in toc -->
 
 ## What is GitOps? <!-- omit in toc -->
 
