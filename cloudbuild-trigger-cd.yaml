@@ -1,7 +1,6 @@
-# Copyright 2018 Google LLC
 # [START cloudbuild]
 steps:
-# This step runs the unit tests on the app
+# Este paso ejecuta las pruebas unitarias de la aplicación.
 - name: 'python:3.7-slim'
   id: Test
   entrypoint: /bin/sh
@@ -9,7 +8,7 @@ steps:
   - -c
   - 'pip install flask && python test_app.py -v'
 
-# This step builds the container image.
+# Este paso construye la imagen del contenedor.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
   args:
@@ -18,9 +17,9 @@ steps:
   - 'gcr.io/$PROJECT_ID/hello-cloudbuild:$SHORT_SHA'
   - '.'
 
-# This step pushes the image to Container Registry
-# The PROJECT_ID and SHORT_SHA variables are automatically
-# replaced by Cloud Build.
+# Este paso enpuja la imagen a Container Registry
+# PROJECT_ID y SHORT_SHA son variables de entorno que ya estan
+# predefinidas en Cloud Build, ete las reemplaza con sus valores correspondientes.
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
   args:
@@ -29,7 +28,7 @@ steps:
 # [END cloudbuild]
 
 # [START cloudbuild-trigger-cd]
-# This step clones the hello-cloudbuild-env repository
+# Este paso  clona el repositorio env.
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Clone env repository
   entrypoint: /bin/sh
@@ -41,7 +40,7 @@ steps:
     git checkout candidate && \
     git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
 
-# This step generates the new manifest
+# Este paso genera el nuevo manifiesto.
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Generate manifest
   entrypoint: /bin/sh
@@ -51,7 +50,7 @@ steps:
      sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml.tpl | \
      sed "s/COMMIT_SHA/${SHORT_SHA}/g" > hello-cloudbuild-env/kubernetes.yaml
 
-# This step pushes the manifest back to hello-cloudbuild-env
+# Este paso realisa push del manifiesto nuevamente al repositorio env.
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Push manifest
   entrypoint: /bin/sh

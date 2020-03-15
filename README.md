@@ -1,20 +1,22 @@
-# GitOps on Google Cloud<!-- omit in toc -->
+# GitOps en Google Cloud<!-- omit in toc -->
 
-## What is GitOps? <!-- omit in toc -->
+<p align="left"><img src="https://cloud.google.com/images/social-icon-google-cloud-1200-630.png" width="200px"/></p>
 
-GitOps is a way to do Kubernetes cluster management and application delivery.
-It works by using [Git](https://git-scm.com/) as a single source of truth for
-[declarative infrastructure and applications](https://en.wikipedia.org/wiki/Infrastructure_as_code),
-together with tools ensuring the _actual state_ of infrastructure and
-applications converges towards the _desired state_ declared in Git. With Git at
-the center of your delivery pipelines, developers can make pull requests to
-accelerate and simplify application deployments and operations tasks to your
-infrastructure or container-orchestration system (e.g. [Kubernetes](https://kubernetes.io/)).
+## ¿Qué es GitOps? <!-- omit in toc -->
+
+GitOps es una forma de realizar entrega continua y administración de Clusters de Kubernetes. La idea es utilizar [Git](https://git-scm.com/) como la única fuente verdadera de [infraestructura en forma declarativa y aplicaciones](https://en.wikipedia.org/wiki/Infrastructure_as_code), en conjunto con otras herramientas se asegura que el _estado actual_ de la infraextructura y las aplicaciones alcance el _estado deseado_ declarado en Git. Con Git en el centro de tus pipelines de entrega continua, los desarrolladores solo deben realizar pull requests para simplificar y acelerar los despliegues de una aplicación, así como las tareas de operacioń a tu sistema de orquestación de conteneedores (e.j. [Kubernetes](https://kubernetes.io/)).
+
+Este repositorio de Git está diseñado para un laboratorio, el cual te ayudará a crear un pipeline de CI/CD que automáticamente construirá una [imagen de contenedor](https://www.docker.com/resources/what-container) a partir de un push de código a Git, la imagen será almacenada en [Container Registry](https://cloud.google.com/container-registry/docs), se actualizará un [manifiesto](https://kubernetes.io/docs/reference/glossary/?all=true#term-manifest) de Kubernetes en un repositorio de Git y desplegará la aplicación en [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/docs) usando ese manifiesto.
 
 <p align="center"><img src="https://cloud.google.com/kubernetes-engine/images/gitops-tutorial-pipeline-architecture.svg" /></p>
 
-## Why is GitOps awesome? <!-- omit in toc -->
 
-It [increases developer productivity](https://www.weave.works/technologies/gitops/#key-benefits), [enhances developer experience](https://www.weave.works/technologies/gitops/#key-benefits), [improves stability](https://www.weave.works/technologies/gitops/#key-benefits), all while having [higher reliability](https://www.weave.works/technologies/gitops/#key-benefits), [higher consistency](https://www.weave.works/technologies/gitops/#key-benefits) and [stronger security guarantees](https://www.weave.works/technologies/gitops/#key-benefits).
+## ¿Por qué GitOps? <!-- omit in toc -->
 
-Modern software development practices _assume_ support for reviewing changes, tracking history, comparing versions, and rolling back bad updates; GitOps applies the same tooling and engineering perspective to managing the systems that deliver direct business value to users and customers.
+[Incrementa la productividad de los desarrolladores](https://www.weave.works/technologies/gitops/#key-benefits), [mejora la experiencia de desarrollo](https://www.weave.works/technologies/gitops/#key-benefits), [mejora la estabilidad](https://www.weave.works/technologies/gitops/#key-benefits), ademas de brindar [fiabilidad](https://www.weave.works/technologies/gitops/#key-benefits), [consistencia](https://www.weave.works/technologies/gitops/#key-benefits) y [garantías de seguridad](https://www.weave.works/technologies/gitops/#key-benefits).
+
+Las prácticas modernas de desarrollo de software _asumen_ el rol de revisión de cambios, historial de seguimiento, comparación de versiones, y volviendo a tras malas actualizaciones; GitOps aplica las misma perspectiva de ingeniería y herramientas para administrar sistemas que entregan valor al negocio, a usuarios y clientes.
+
+## ¿Quieres saber mas? <!-- omit in toc -->
+
+Contactame `jsimanca@grupodot.com`.

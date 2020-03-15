@@ -1,7 +1,7 @@
 # [START cloudbuild-delivery]
 steps:
-# This step deploys the new version of our container image
-# in the hello-cloudbuild Kubernetes Engine cluster.
+# Este paso despliega la nueva versión de nuestra imagen de contenador
+# en el cluster de Kubernetes.
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Deploy
   args:
@@ -12,9 +12,9 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cloudbuild'
 
-# This step copies the applied manifest to the production branch
-# The COMMIT_SHA variable is automatically
-# replaced by Cloud Build.
+# Este paso copia el manifiesto desplegado a la rama production
+# COMMIT_SHA es una variable de entorno la cual es reemplazada
+# por Cloud Build.
 - name: 'gcr.io/cloud-builders/git'
   id: Copy to production branch
   entrypoint: /bin/sh

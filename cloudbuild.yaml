@@ -1,6 +1,6 @@
 # [START cloudbuild]
 steps:
-# This step runs the unit tests on the app
+# Este paso ejecuta las pruebas unitarias de la aplicación.
 - name: 'python:3.7-slim'
   id: Test
   entrypoint: /bin/sh
@@ -8,7 +8,7 @@ steps:
   - -c
   - 'pip install flask && python test_app.py -v'
 
-# This step builds the container image.
+# Este paso construye la imagen del contenedor.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
   args:
@@ -17,9 +17,9 @@ steps:
   - 'gcr.io/$PROJECT_ID/hello-cloudbuild:$SHORT_SHA'
   - '.'
 
-# This step pushes the image to Container Registry
-# The PROJECT_ID and SHORT_SHA variables are automatically
-# replaced by Cloud Build.
+# Este paso enpuja la imagen a Container Registry
+# PROJECT_ID y SHORT_SHA son variables de entorno que ya estan
+# predefinidas en Cloud Build, ete las reemplaza con sus valores correspondientes.
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
   args:
