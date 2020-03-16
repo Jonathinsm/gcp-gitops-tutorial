@@ -28,7 +28,7 @@ steps:
 # [END cloudbuild]
 
 # [START cloudbuild-trigger-cd]
-# Este paso  clona el repositorio env.
+# Este paso clona el repositorio env.
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Clone env repository
   entrypoint: /bin/sh
@@ -50,7 +50,7 @@ steps:
      sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml.tpl | \
      sed "s/COMMIT_SHA/${SHORT_SHA}/g" > hello-cloudbuild-env/kubernetes.yaml
 
-# Este paso realisa push del manifiesto nuevamente al repositorio env.
+# Este paso realiza push del manifiesto nuevamente al repositorio env.
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Push manifest
   entrypoint: /bin/sh

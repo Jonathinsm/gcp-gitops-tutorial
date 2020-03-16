@@ -12,7 +12,7 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cloudbuild'
 
-# Este paso copia el manifiesto desplegado a la rama production
+# Este paso copia el manifiesto desplegado a la rama "production"
 # COMMIT_SHA es una variable de entorno la cual es reemplazada
 # por Cloud Build.
 - name: 'gcr.io/cloud-builders/git'
@@ -22,14 +22,14 @@ steps:
   - '-c'
   - |
     set -x && \
-    # Configure Git to create commits with Cloud Build's service account
+    # Configuración de Git para realizar commit con la cuenta de servicio de Cloud Build
     git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)') && \
-    # Switch to the production branch and copy the kubernetes.yaml file from the candidate branch
+    # Cambia a la rama "production" y compia el archivo kubernetes.yaml a la rama "cantidate"
     git fetch origin production && git checkout production && \
     git checkout $COMMIT_SHA kubernetes.yaml && \
-    # Commit the kubernetes.yaml file with a descriptive commit message
+    # Se realiza el commit de el archivo kubernetes.yaml con el respectivo mensaje
     git commit -m "Manifest from commit $COMMIT_SHA
     $(git log --format=%B -n 1 $COMMIT_SHA)" && \
-    # Push the changes back to Cloud Source Repository
+    # Se realiza el push de los cambios de la rama "production" hacia Cloud Source repositories
     git push origin production
 # [END cloudbuild-delivery]
